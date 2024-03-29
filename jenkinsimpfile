@@ -1,6 +1,6 @@
 node {
 try{ 
-slackNotification('STARTED')
+slackNotifications('STARTED')
 def mavenHome = tool name : 'maven3.9.6'
 
 echo "the job name is:${env.JOB_NAME}"
@@ -41,7 +41,7 @@ currentbuild.result="FAILURE"
 throw e
 }//catch closing
 finally{
-slackNotification(currentbuild.result)
+slackNotifications(currentbuild.result)
 }
 }//node closing
 
