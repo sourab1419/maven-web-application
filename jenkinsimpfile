@@ -36,7 +36,7 @@ stage ('deploytotomcatserver'){
 
 }//try closing
 
-catch (e) {
+catch(e){
 currentbuild.result="FAILURE"
 throw e
 }//catch closing
