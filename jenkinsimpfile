@@ -1,5 +1,5 @@
 node {
-
+try{
 echo "the job name is:${env.JOB_NAME}"
 echo "the node name is:${env.NODE_NAME}"
 echo "the build number is:${env.BUILD_NUMBER}"
@@ -8,8 +8,7 @@ echo "the build number is:${env.BUILD_NUMBER}"
 def mavenHome = tool name : 'maven3.9.6'
 
 properties([buildDiscarder(logRotator(artifactDaysToKeepStr: '', artifactNumToKeepStr: '5', daysToKeepStr: '', numToKeepStr: '5')), [$class: 'JobLocalConfiguration', changeReasonComment: ''], pipelineTriggers([pollSCM('* * * * * ')])])
-try{
-sendslacknotifications("STARTED")
+
 stage ('checkoutcode') {
    git branch: 'development', credentialsId: '51240225-6e66-453f-b9d4-3af605f56583', url: 'https://github.com/sourab1419/maven-web-application.git' 
 }   
