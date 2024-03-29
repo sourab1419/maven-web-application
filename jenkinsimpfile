@@ -1,4 +1,8 @@
 node {
+try{ 
+slackNotification('STARTED')
+def mavenHome = tool name : 'maven3.9.6'
+
 echo "the job name is:${env.JOB_NAME}"
 echo "the node name is:${env.NODE_NAME}"
 echo "the build number is:${env.BUILD_NUMBER}"
@@ -6,7 +10,7 @@ echo "the build number is:${env.BUILD_NUMBER}"
 
 
 properties([buildDiscarder(logRotator(artifactDaysToKeepStr: '', artifactNumToKeepStr: '5', daysToKeepStr: '', numToKeepStr: '5')), [$class: 'JobLocalConfiguration', changeReasonComment: ''], pipelineTriggers([pollSCM('* * * * * ')])])
-def mavenHome = tool name : 'maven3.9.6'
+
 stage ('checkoutcode') {
    git branch: 'development', credentialsId: '51240225-6e66-453f-b9d4-3af605f56583', url: 'https://github.com/sourab1419/maven-web-application.git' 
 }   
@@ -30,5 +34,15 @@ stage ('deploytotomcatserver'){
 }
 */
 
+}//try closing
+
+catch (e) {
+currentbuild.result="FAILURE"
+throw e
+}//catch closing
+finally{
+slackNotification(currentbuild.result)
 }
+}//node closing
+
 
