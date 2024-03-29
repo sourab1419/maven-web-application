@@ -37,11 +37,11 @@ stage ('deploytotomcatserver'){
 }//try closing
 
 catch(e){
-currentbuild.result="FAILURE"
+currentBuild.result="FAILURE"
 throw e
 }//catch closing
 finally{
-sendSlackNotifications(currentbuild.result)
+sendSlackNotifications(currentBuild.result)
 }
 }//node closing
 
