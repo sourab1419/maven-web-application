@@ -42,14 +42,14 @@ currentBuild.result="FAILURE"
 throw e
 }//catch closing
 finally{
-sendslackNotifications(currentBuild.result)
+sendslacknotifications(currentBuild.result)
 }
 }//node closing
 
 /*
 //Code Snippet for sending slack notifications.
 
-def slackNotifications(String buildStatus = 'STARTED') {
+def slacknotifications(String buildStatus = 'STARTED') {
   // build status of null means successful
   buildStatus =  buildStatus ?: 'SUCCESS'
   //buildStatus = buildStatus ? "SUCCESS":"FAILURE"
