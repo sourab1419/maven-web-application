@@ -42,7 +42,7 @@ currentBuild.result="FAILURE"
 throw e
 }//catch closing
 finally{
-sendSlackNotifications(currentBuild.result)
+sendslackNotifications(currentBuild.result)
 }
 }//node closing
 
