@@ -1,4 +1,4 @@
-node {
+node('wallmartnode') {
 try{
  sendslacknotifications('STARTED')
 echo "the job name is:${env.JOB_NAME}"
