@@ -1,6 +1,8 @@
+@Library('sharedlibs') _
+
 node('wallmartnode') {
 try{
- sendslacknotifications('STARTED')
+ sendSlackNotifications('STARTED')
 echo "the job name is:${env.JOB_NAME}"
 echo "the node name is:${env.NODE_NAME}"
 echo "the build number is:${env.BUILD_NUMBER}"
@@ -40,7 +42,7 @@ currentBuild.result="FAILURE"
 throw e
 }//catch closing
 finally{
-sendslacknotifications(currentBuild.result)
+sendSlackNotifications(currentBuild.result)
 }
 }//node closing
 
