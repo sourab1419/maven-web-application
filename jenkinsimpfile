@@ -44,7 +44,7 @@ sendslacknotifications(currentBuild.result)
 }
 }//node closing
 
-
+/*
 //Code Snippet for sending slack notifications.
 
 def sendslacknotifications(String buildStatus = 'STARTED') {
@@ -75,5 +75,5 @@ def sendslacknotifications(String buildStatus = 'STARTED') {
   slackSend (color: colorCode, message: summary,channel:"#wallmart")
 }
 
-
+*/
 
